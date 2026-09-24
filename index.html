@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ImMiku — Tu URL ImMiku al instante</title>
+  <meta name="description" content="ImMiku: sube fotos, videos y más, y obtén tu URL ImMiku al instante. Creado por Chizu." />
+  <link rel="icon" href="assets/icon.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="bg-decor" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <img class="brand-icon" src="https://i.ibb.co/1J9FF0X1/icon.jpg" alt="Icono ImMiku" onerror="this.onerror=null;this.src='assets/icon.jpg';" />
+      <span class="brand-name">Im<span>Miku</span></span>
+    </div>
+    <nav class="nav">
+      <a href="#subir">Subir</a>
+      <a href="#historial">Historial</a>
+      <a href="#info">Info</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img class="hero-banner" src="https://i.ibb.co/Z6vFWZrs/images-31-15.jpg" alt="Banner Miku Nakano" onerror="this.onerror=null;this.src='assets/banner.jpg';" />
+    <div class="hero-text">
+      <h1>Tus archivos, una <span class="accent">URL ImMiku</span> al instante</h1>
+      <p>Fotos, videos y más. Convierte cualquier archivo en su URL ImMiku (Base64) directamente en tu navegador. Sin subir a servidores. Sin registro.</p>
+    </div>
+  </section>
+
+  <main>
+    <!-- ============ ZONA DE SUBIDA ============ -->
+    <section id="subir" class="card upload-card">
+      <h2>📤 Generar URL ImMiku</h2>
+
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Zona de carga">
+        <div class="dz-icon">🎧</div>
+        <p class="dz-main">Arrastra tu archivo aquí o <span class="link">haz clic para elegir</span></p>
+        <p class="dz-sub">Imágenes, videos, audio, documentos… → URL ImMiku al instante</p>
+        <input type="file" id="fileInput" hidden />
+      </div>
+
+      <div id="filePreview" class="file-preview" hidden>
+        <div class="fp-info">
+          <span id="fpName" class="fp-name"></span>
+          <span id="fpSize" class="fp-size"></span>
+        </div>
+        <button id="btnUpload" class="btn btn-primary">Generar URL ImMiku ✨</button>
+      </div>
+
+      <div id="progressWrap" class="progress-wrap" hidden>
+        <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+        <span id="progressText">0%</span>
+      </div>
+
+      <div id="result" class="result" hidden>
+        <p class="result-label"><span class="immiku-badge">ImMiku</span> 🔗 Tu URL está lista (compártela y quien la abra verá el archivo):</p>
+        <p id="resultNote" class="muted" hidden></p>
+        <div class="result-row">
+          <input id="resultUrl" class="result-url" type="text" readonly />
+          <button id="btnCopy" class="btn btn-primary">Copiar URL ImMiku</button>
+          <button id="btnCopy64" class="btn btn-ghost">Copiar Base64</button>
+        </div>
+        <div id="resultEmbed" class="result-embed" hidden></div>
+      </div>
+
+      <p id="errorMsg" class="error" hidden></p>
+    </section>
+
+    <!-- ============ HISTORIAL ============ -->
+    <section id="historial" class="card">
+      <div class="card-head">
+        <h2>🕘 Historial local</h2>
+        <button id="btnClear" class="btn btn-ghost">Limpiar</button>
+      </div>
+      <ul id="historyList" class="history"></ul>
+      <p id="historyEmpty" class="muted">Aún no has generado ninguna URL ImMiku… ¡anímate!</p>
+    </section>
+
+    <!-- ============ INFO ============ -->
+    <section id="info" class="card info">
+      <h2>ℹ️ Acerca de ImMiku</h2>
+      <div class="info-grid">
+        <div class="info-item"><span class="info-num">100%</span><span class="info-desc">local: nada se sube a servidores</span></div>
+        <div class="info-item"><span class="info-num">0</span><span class="info-desc">registros o cuentas necesarias</span></div>
+        <div class="info-item"><span class="info-num">∞</span><span class="info-desc">uso: sin límites de la página</span></div>
+        <div class="info-item"><span class="info-num">⚡</span><span class="info-desc">instantáneo: convierte a Base64</span></div>
+      </div>
+      <p class="muted">La URL ImMiku es un enlace <code>data:</code> (Base64) que contiene tu archivo completo: funciona pegándolo en cualquier navegador, en etiquetas <code>&lt;img&gt;</code> o donde necesites el contenido. Como todo ocurre en tu dispositivo, los archivos muy grandes pueden tomar unos segundos en convertirse y el historial guarda las URLs más recientes que quepan en tu navegador.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <img src="https://i.ibb.co/1J9FF0X1/icon.jpg" alt="" class="footer-icon" onerror="this.onerror=null;this.src='assets/icon.jpg';" />
+    <p>ImMiku — Creado por <strong>Chizu</strong> 💙</p>
+  </footer>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
